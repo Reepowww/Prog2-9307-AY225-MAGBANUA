@@ -1,0 +1,247 @@
+/* Import Google Fonts for modern typography */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Body: Professional, readable with increased text size */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
+    color: #495057;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px; /* Increased for readability */
+}
+
+/* Container: Centered, professional card */
+.container {
+    width: 100%;
+    max-width: 600px; /* Wider for table */
+    margin: 20px;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid #e9ecef;
+}
+
+.container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings: Larger for readability */
+h1 {
+    font-size: 28px; /* Increased */
+    font-weight: 700;
+    margin-bottom: 35px;
+    color: #212529;
+    letter-spacing: 0.5px;
+}
+
+h1 i {
+    margin-right: 10px;
+    color: #1e3a8a;
+}
+
+/* Inputs: Professional styling */
+input {
+    width: 100%;
+    padding: 16px 18px;
+    margin: 14px 0;
+    font-size: 18px; /* Increased */
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    background: #f8f9fa;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1e3a8a;
+    box-shadow: 0 0 12px rgba(30, 58, 138, 0.3);
+    transform: scale(1.02);
+}
+
+/* Buttons: Professional with gold accents */
+button {
+    width: 100%;
+    padding: 16px;
+    margin-top: 14px;
+    font-size: 18px; /* Increased */
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Primary buttons */
+button:not(.secondary) {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: #ffffff;
+}
+
+button:not(.secondary):hover {
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+}
+
+/* Secondary buttons */
+.secondary {
+    background: #6c757d;
+    color: #ffffff;
+}
+
+.secondary:hover {
+    background: #5a6268;
+}
+
+.secondary i {
+    margin-right: 8px;
+}
+
+/* Table: Professional styling for admin dashboard */
+#userTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px; /* Readable */
+}
+
+#userTable th, #userTable td {
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+}
+
+#userTable th {
+    background: #1e3a8a;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+#userTable tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* Hidden class */
+.hidden {
+    display: none;
+}
+
+/* Info text: Readable with icons */
+.infoText {
+    font-size: 18px; /* Increased */
+    margin: 16px 0;
+    color: #495057;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.infoText i {
+    margin-right: 10px;
+    color: #1e3a8a;
+}
+
+/* Modal: Professional animations */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.modal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modalContent {
+    background: #ffffff;
+    padding: 35px;
+    width: 90%;
+    max-width: 380px;
+    border-radius: 16px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    transform: translateY(30px) scale(0.95);
+    transition: transform 0.4s ease;
+    border: 1px solid #e9ecef;
+}
+
+.modal:not(.hidden) .modalContent {
+    transform: translateY(0) scale(1);
+}
+
+.modalContent h2 {
+    margin-bottom: 18px;
+    font-weight: 700;
+    font-size: 24px; /* Increased */
+}
+
+.modalContent p {
+    margin-bottom: 25px;
+    color: #495057;
+    font-size: 18px; /* Increased */
+}
+
+.modalContent button {
+    width: auto;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: #ffffff;
+}
+
+.modalContent button:hover {
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+}
+
+/* Error modal specific */
+#errorModal .modalContent h2 {
+    color: #dc3545;
+}
+
+/* Success modals specific */
+#successModal .modalContent h2,
+#signupSuccessModal .modalContent h2 {
+    color: #28a745;
+}

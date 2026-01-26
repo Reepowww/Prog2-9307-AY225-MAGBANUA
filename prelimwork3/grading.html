@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prelim Grade Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <!-- Expressive, modern sans-serif font -->
+    <style>
+        /* Crafted design philosophy: Intentional, emotionally engaging, with strong hierarchy and polish, resembling university academic portals */
+        body {
+            font-family: 'Inter', sans-serif; /* Personality-rich sans-serif */
+            background: linear-gradient(135deg, #f7f8fa 0%, #e8ecef 100%); /* Warm off-white to soft gray gradient */
+            color: #2c3e50; /* Deep charcoal text for readability */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05); /* Layered depth */
+            padding: 50px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #f39c12, #f1c40f); /* Warm amber/gold accent */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 3em;
+            font-weight: 700;
+            color: #34495e; /* Navy for emphasis */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.5px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f9fbfc;
+            border-radius: 15px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e1e8ed;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #34495e;
+            border-bottom: 3px solid #f39c12; /* Warm accent underline */
+            padding-bottom: 10px;
+        }
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #34495e;
+            font-size: 1.1em;
+        }
+        input {
+            padding: 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 1.1em;
+            background-color: #ffffff;
+            color: #2c3e50;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input:focus {
+            outline: none;
+            border-color: #f39c12;
+            box-shadow: 0 0 12px rgba(243, 156, 18, 0.3);
+        }
+        button {
+            padding: 18px;
+            background: linear-gradient(135deg, #f39c12, #f1c40f); /* Warm gradient */
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .results.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .result-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e8ed;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        .result-card.primary {
+            background: linear-gradient(135deg, #f39c12, #f1c40f); /* Highlighted for key results */
+            color: #ffffff;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        .result-card.secondary {
+            font-weight: 500;
+        }
+        .result-card.status {
+            background: #34495e; /* Navy for status */
+            color: #ffffff;
+            font-size: 1.5em;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .result-card p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            .input-grid, .results {
+                grid-template-columns: 1fr;
+            }
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prelim Grade Calculator</h1>
+        
+        <!-- Input Section -->
+        <div class="section">
+            <h2>Enter Scores</h2>
+            <div class="input-grid">
+                <div class="input-group">
+                    <label for="attendance">Attendance Score (0-100)</label>
+                    <input type="number" id="attendance" min="0" max="100" step="0.01" required>
+                </div>
+                <div class="input-group">
+                    <label for="lab1">Lab Work 1 Score (0-100)</label>
+                    <input type="number" id="lab1" min="0" max="100" step="0.01" required>
+                </div>
+                <div class="input-group">
+                    <label for="lab2">Lab Work 2 Score (0-100)</label>
+                    <input type="number" id="lab2" min="0" max="100" step="0.01" required>
+                </div>
+                <div class="input-group">
+                    <label for="lab3">Lab Work 3 Score (0-100)</label>
+                    <input type="number" id="lab3" min="0" max="100" step="0.01" required>
+                </div>
+            </div>
+            <button onclick="calculateGrade()">Calculate Grades</button>
+        </div>
+        
+        <!-- Computation Summary Section -->
+        <div id="summarySection" class="section" style="display: none;">
+            <h2>Computation Summary</h2>
+            <div class="results" id="summaryResults">
+                <div class="result-card secondary" id="attendanceCard"><p id="attendanceResult"></p></div>
+                <div class="result-card secondary" id="lab1Card"><p id="lab1Result"></p></div>
+                <div class="result-card secondary" id="lab2Card"><p id="lab2Result"></p></div>
+                <div class="result-card secondary" id="lab3Card"><p id="lab3Result"></p></div>
+                <div class="result-card secondary" id="labAvgCard"><p id="labAvgResult"></p></div>
+                <div class="result-card secondary" id="classStandingCard"><p id="classStandingResult"></p></div>
+            </div>
+        </div>
+        
+        <!-- Highlighted Results Section -->
+        <div id="resultsSection" class="section" style="display: none;">
+            <h2>Required Prelim Exam Scores</h2>
+            <div class="results" id="finalResults">
+                <div class="result-card primary" id="passCard"><p id="passResult"></p></div>
+                <div class="result-card primary" id="excellentCard"><p id="excellentResult"></p></div>
+                <div class="result-card status" id="statusCard"><p id="statusResult"></p></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Calculates and displays the Prelim Grade components and required exam scores.
+         * Grading Formula:
+         * - Prelim Grade = 70% Prelim Exam + 30% Class Standing
+         * - Class Standing = 40% Attendance + 60% Lab Work Average
+         * - Lab Work Average = (Lab Work 1 + Lab Work 2 + Lab Work 3) / 3
+         * 
+         * Validation: All computed grades are capped at 100 for academic compliance.
+         * Status: Determined based on class standing and required exam scores.
+         */
+        function calculateGrade() {
+            // Retrieve and validate inputs
+            const attendance = parseFloat(document.getElementById('attendance').value);
+            const lab1 = parseFloat(document.getElementById('lab1').value);
+            const lab2 = parseFloat(document.getElementById('lab2').value);
+            const lab3 = parseFloat(document.getElementById('lab3').value);
+
+            if (isNaN(attendance) || isNaN(lab1) || isNaN(lab2) || isNaN(lab3) ||
+                attendance < 0 || attendance > 100 || lab1 < 0 || lab1 > 100 ||
+                lab2 < 0 || lab2 > 100 || lab3 < 0 || lab3 > 100) {
+                alert('Please enter valid scores between 0 and 100.');
+                return;
+            }
+
+            // Computations with capping at 100
+            const labWorkAverage = Math.min((lab1 + lab2 + lab3) / 3.0, 100.0);
+            const classStanding = Math.min(0.4 * attendance + 0.6 * labWorkAverage, 100.0);
+
+            // Required Prelim Exam scores (capped at 100)
+            // Formula: PrelimGrade = 0.7 * PrelimExam + 0.3 * ClassStanding
+            // Solve for PrelimExam: PrelimExam = (TargetGrade - 0.3 * ClassStanding) / 0.7
+            const requiredForPass = Math.min((75 - 0.3 * classStanding) / 0.7, 100.0);
+            const requiredForExcellent = Math.min((100 - 0.3 * classStanding) / 0.7, 100.0);
+
+            // Determine academic status
+            let status;
+            if (classStanding < 50) {
+                status = "AT RISK";
+            } else if (requiredForPass > 75) {
+                status = "NEEDS IMPROVEMENT";
+            } else if (requiredForExcellent <= 100 && classStanding >= 80) {
+                status = "EXCELLENT";
+            } else {
+                status = "PASSED";
+            }
+
+            // Display summary results (whole numbers)
+            document.getElementById('attendanceResult').textContent = `Attendance Score: ${Math.round(attendance)}%`;
+        
+            document.getElementById('lab1Result').textContent = `Lab Work 1: ${Math.round(lab1)}`;
+                        document.getElementById('lab2Result').textContent =
+                `Lab Work 2: ${Math.round(lab2)}`;
+
+            document.getElementById('lab3Result').textContent =
+                `Lab Work 3: ${Math.round(lab3)}`;
+
+            document.getElementById('labAvgResult').textContent =
+                `Lab Work Average: ${Math.round(labWorkAverage)}%`;
+
+            document.getElementById('classStandingResult').textContent =
+                `Class Standing: ${Math.round(classStanding)}%`;
+
+            // Display required exam scores (whole numbers)
+            document.getElementById('passResult').textContent =
+                `Required Prelim Exam Score to PASS (75): ${Math.round(requiredForPass)}%`;
+
+            document.getElementById('excellentResult').textContent =
+                `Required Prelim Exam Score to EXCELLENT (100): ${Math.round(requiredForExcellent)}%`;
+
+            // Display academic status
+            document.getElementById('statusResult').textContent = status;
+
+            // Reveal sections
+            document.getElementById('summarySection').style.display = 'block';
+            document.getElementById('resultsSection').style.display = 'block';
+
+            // Animate result grids
+            document.getElementById('summaryResults').classList.add('show');
+            document.getElementById('finalResults').classList.add('show');
+        }
+    </script>
+</body>
+</html>
