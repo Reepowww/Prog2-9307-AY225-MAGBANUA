@@ -2,28 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Record System</title>
+    <title>Student Records - Cyrus Magbanua</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Cyrus Mathew C. Magbanua - BSCS</h1>
-    <table id="recordsTable">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Grade</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody">
-        </tbody>
-    </table>
-    <br>
-    <input type="text" id="idInput" placeholder="ID">
-    <input type="text" id="nameInput" placeholder="Name">
-    <input type="text" id="gradeInput" placeholder="Grade">
-    <button id="addButton">Add</button>
-    <script src="script.js"></script>
+    <header>
+        <h1>Student Records System</h1>
+        <p>Cyrus Mathew C. Magbanua - BSCS</p>
+    </header>
+
+    <section class="form-section">
+        <div class="form-grid">
+            <input type="text" id="id-input" placeholder="Student ID" class="input-field">
+            <input type="text" id="first-input" placeholder="First Name" class="input-field">
+            <input type="text" id="last-input" placeholder="Last Name" class="input-field">
+            <input type="number" id="lab1-input" placeholder="Lab 1" class="input-field">
+            <input type="number" id="lab2-input" placeholder="Lab 2" class="input-field">
+            <input type="number" id="lab3-input" placeholder="Lab 3" class="input-field">
+            <input type="number" id="prelim-input" placeholder="Prelim Exam" class="input-field">
+            <input type="number" id="attendance-input" placeholder="Attendance" class="input-field">
+            <button id="add-btn" class="btn">Add Student</button>
+        </div>
+    </section>
+
+    <section class="table-section">
+        <table id="student-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Lab 1</th>
+                    <th>Lab 2</th>
+                    <th>Lab 3</th>
+                    <th>Prelim Exam</th>
+                    <th>Attendance</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Rows added dynamically -->
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>© 2026 Student Records System</p>
+    </footer>
+
+    <script src="StudentRecord.js"></script>
 </body>
 </html>

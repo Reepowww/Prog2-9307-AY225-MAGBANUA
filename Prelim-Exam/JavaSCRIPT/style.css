@@ -1,0 +1,113 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    color: #111;
+}
+
+header {
+    text-align: center;
+    background-color: #1c1c1c;
+    color: #c0c0c0;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    color: #00bfae;
+}
+
+header p {
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
+}
+
+.form-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.input-field {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    font-size: 1rem;
+}
+
+.btn {
+    grid-column: span 4;
+    padding: 12px;
+    background-color: #00bfae;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #008f7f;
+}
+
+.table-section {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    width: 90%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #1c1c1c;
+    color: #c0c0c0;
+}
+
+tr:hover {
+    background-color: #e0f7f4;
+}
+
+button.delete-btn {
+    background-color: #ff4d4d;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button.delete-btn:hover {
+    background-color: #cc0000;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #1c1c1c;
+    color: #c0c0c0;
+    margin-top: 20px;
+}
