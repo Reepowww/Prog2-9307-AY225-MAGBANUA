@@ -1,7 +1,7 @@
 /**
  * ===============================================
  * Full Name   : Cyrus Mathew C. Magbanua
- * Student ID  : N/A
+ * Student ID  : 25-2386-709
  * Course Code : Linear Algebra / BSIT
  * Assignment  : Assignment 01 - 3x3 Matrix Determinant Solver
  * Date        : 2026-03-16
@@ -9,6 +9,7 @@
  *               a fixed 3x3 matrix using cofactor expansion along
  *               the first row. It prints the matrix, each 2x2
  *               minor, each cofactor term, and the final answer.
+ * // Determinant Solver - Linear Algebra Assignment
  * ===============================================
  */
 
@@ -76,7 +77,7 @@ function solveDeterminant(matrix) {
     console.log("==================================================");
 }
 
-// This is the student's assigned 3x3 matrix.
+
 const matrix = [
     [2, 5, 4],
     [3, 1, 6],

@@ -7,6 +7,7 @@
  *               fixed 3x3 matrix using cofactor
  *               expansion along the first row
  *               and prints the full solution.
+ * // Determinant Solver - Linear Algebra Assignment
  * ===============================================
  */
 
